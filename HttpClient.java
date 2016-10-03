@@ -108,6 +108,7 @@ public class HttpCinet {
 	 * 同步的客户端
 	 */
 	public void client() throws IOException{
+		
 		HttpPost httpPost = new HttpPost("http://localhost:8080/example");
 		
 		/*
