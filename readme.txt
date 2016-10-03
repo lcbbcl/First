@@ -1,1 +1,1 @@
-This Repositry is learn to git
+This Repositry is java Util for me
