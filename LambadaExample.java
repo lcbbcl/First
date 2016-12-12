@@ -47,6 +47,13 @@ public class LambadaExample {
 		
 		features.forEach((n) -> System.out.println(n));
 		features.forEach(System.out::println);
+
+
+
+		IntStream.range(0, features.size()).forEach(i -> {
+			System.out.println(features.get(i));
+		});
+
 		
 	}
 
