@@ -29,8 +29,6 @@ public class LambadaExample {
 		
 
 
-
-
 		//java8之前
 		/*Collections.sort(new ArrayList<>(),new Comparator<File>() {
 			@Override
