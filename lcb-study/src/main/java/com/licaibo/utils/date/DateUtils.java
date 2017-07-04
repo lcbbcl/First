@@ -1,18 +1,12 @@
-package com.gitlab.ci.web;
-
-
-
-import com.alibaba.fastjson.JSON;
-import org.apache.commons.collections.CollectionUtils;
+package com.licaibo.utils.date;
 
 import java.lang.String;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 
-public class DataUtils {
+
+public class DateUtils {
 
     public static void main(String[] args) {
 
