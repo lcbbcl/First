@@ -41,25 +41,19 @@ public class HttpCinetUtils {
 		 * timeout
 		 */
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(5000).setConnectionRequestTimeout(5000)
-                .setSocketTimeout(600000).build();
+                                                   .setConnectTimeout(5000)
+                                                   .setConnectionRequestTimeout(5000)
+                                                   .setSocketTimeout(600000)
+                                                   .build();
         httpPost.setConfig(requestConfig);
-
-
-
         //声明异步的传输客户端
         CloseableHttpAsyncClient asyncHttpClient = HttpAsyncClientBuilder.create()
-                .setDefaultRequestConfig(requestConfig)
-                .build();
-
-
-
+                                                                         .setDefaultRequestConfig(requestConfig)
+                                                                         .build();
         //转为字节流
         String str1="sssdfsdf";
         ByteArrayInputStream str1Btye  = new ByteArrayInputStream(str1.getBytes(Charset.forName("utf-8")));
         BufferedInputStream str1Buffer = new BufferedInputStream(str1Btye);
-
-
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         //这里可以传输字段信息
         builder.addTextBody("Name", "myName");
@@ -73,26 +67,19 @@ public class HttpCinetUtils {
 		 * HttpEntity是非repeteable的,应换成BufferedHttpEntity去传送
 		 */
         BufferedHttpEntity bufferedHttpEntity = new BufferedHttpEntity (httpEntity);
-
         httpPost.setEntity(bufferedHttpEntity);
-
         Header headers = new BasicHeader(HttpHeaders.DATE, DateUtils.formatDate(new Date(), DateUtils.PATTERN_RFC1123));
         httpPost.setHeader(headers);
-
         asyncHttpClient.start();
         asyncHttpClient.execute(httpPost, new FutureCallback<HttpResponse>(){
-
             @Override
             public void completed(HttpResponse result) {
                 //to do something when completed
-
-
             }
 
             @Override
             public void failed(Exception ex) {
                 //to do something when failed
-
             }
 
             @Override
@@ -101,7 +88,6 @@ public class HttpCinetUtils {
             }
 
         });
-
         IOUtils.closeQuietly(str1Btye);
         IOUtils.closeQuietly(str1Buffer);
         asyncHttpClient.close();
@@ -111,27 +97,21 @@ public class HttpCinetUtils {
     /*
      * 同步的客户端
      */
-    public void client() throws IOException{
-
+    public void client() throws IOException {
         HttpPost httpPost = new HttpPost("http://localhost:8080/example");
-
 		/*
 		 * setting timeout
 		 */
         RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(5000).setConnectionRequestTimeout(1000)
-                .setSocketTimeout(2000).build();
+                                                   .setConnectTimeout(5000)
+                                                   .setConnectionRequestTimeout(1000)
+                                                   .setSocketTimeout(2000)
+                                                   .build();
         httpPost.setConfig(requestConfig);
-
-
-
         CloseableHttpClient closeableHttpClient = HttpClientBuilder.create()
-                .setDefaultRequestConfig(requestConfig)
-                .setRetryHandler(new DefaultHttpRequestRetryHandler())
-                .build();
-
-
-
+                                                                   .setDefaultRequestConfig(requestConfig)
+                                                                   .setRetryHandler(new DefaultHttpRequestRetryHandler())
+                                                                   .build();
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.addTextBody("param", "xxxx");
         HttpEntity httpEntity = builder.build();
@@ -144,11 +124,6 @@ public class HttpCinetUtils {
         httpPost.setEntity(bufferedHttpEntity);
         //HttpResponse httpResponse = closeableHttpClient.execute(httpPost);
         closeableHttpClient.close();
-
     }
-
-
-
-
 
 }
