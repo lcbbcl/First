@@ -50,7 +50,7 @@ public class LambadaUtils {
             System.out.println(features.get(i));
         });
 
-		/*
+		/**
 		 * 转大写
 		 */
         List<String> wordList = Arrays.asList("a","b","c");
@@ -59,14 +59,14 @@ public class LambadaUtils {
                                       .collect(Collectors.toList());
         //System.out.println(output);
 
-		/*
+		/**
 		 * 取偶数
 		 */
         Integer[] sixNums = {1, 2, 3, 4, 5, 6};
         Integer[] newNums = Stream.of(sixNums).filter(i -> i%2==0).toArray(Integer[]::new);
         //System.out.println(newNums[0]+","+newNums[1]+","+newNums[2]);
 
-		/*
+		/**
 		 * Optional,作为一个容器，它可能含有某值，或者不包含。使用它的目的是尽可能避免 NullPointerException
 		 */
         System.out.println(getLength("abcd"));

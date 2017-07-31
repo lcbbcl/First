@@ -37,9 +37,7 @@ public class HttpCinetUtils {
 
         HttpPost httpPost = new HttpPost("http://localhost:8080/post");
 
-		/*
-		 * timeout
-		 */
+		//timeout
         RequestConfig requestConfig = RequestConfig.custom()
                                                    .setConnectTimeout(5000)
                                                    .setConnectionRequestTimeout(5000)
@@ -61,7 +59,7 @@ public class HttpCinetUtils {
         //这里可以传输字节流
         builder.addBinaryBody("bufferedInputStream", str1Buffer);
         HttpEntity httpEntity = builder.build();
-		/*
+		/**
 		 * HttpEntity转成BufferedHttpEntity
 		 * 因为当HttpEntity当中有字节流时，在服务端如果超时了重试时，会抛NonRepeatableRequestException，此时实体不能重试发送请求
 		 * HttpEntity是非repeteable的,应换成BufferedHttpEntity去传送
@@ -94,12 +92,12 @@ public class HttpCinetUtils {
     }
 
 
-    /*
+    /**
      * 同步的客户端
      */
     public void client() throws IOException {
         HttpPost httpPost = new HttpPost("http://localhost:8080/example");
-		/*
+		/**
 		 * setting timeout
 		 */
         RequestConfig requestConfig = RequestConfig.custom()
@@ -115,7 +113,7 @@ public class HttpCinetUtils {
         MultipartEntityBuilder builder = MultipartEntityBuilder.create();
         builder.addTextBody("param", "xxxx");
         HttpEntity httpEntity = builder.build();
-		/*
+		/**
 		 * HttpEntity转成BufferedHttpEntity
 		 * 因为当HttpEntity当中有字节流时，在服务端如果超时了重试时，会抛NonRepeatableRequestException，此时实体不能重试发送请求
 		 * HttpEntity是非repeteable的,应换成BufferedHttpEntity去传送
